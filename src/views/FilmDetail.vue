@@ -13,74 +13,14 @@
         <th scope="col">Hành động</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody v-for="(film, index) in films" :key="film._id">
       <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
+        <th scope="row" v-text="index + 1"></th>
+        <td v-text="film.name"></td>
+        <td v-text="film.time"></td>
+        <td v-text="film.country[0]"></td>
         <td>
-          <button type="button" class="btn btn-primary">chi tiết</button>
-          &nbsp;<button type="button" class="btn btn-danger">xóa</button>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-        <td>
-          <button type="button" class="btn btn-primary">chi tiết</button>
-          &nbsp;<button type="button" class="btn btn-danger">xóa</button>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-        <td>
-          <button type="button" class="btn btn-primary">chi tiết</button>
-          &nbsp;<button type="button" class="btn btn-danger">xóa</button>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">4</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>
-          <button type="button" class="btn btn-primary">chi tiết</button>
-          &nbsp;<button type="button" class="btn btn-danger">xóa</button>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">5</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>
-          <button type="button" class="btn btn-primary">chi tiết</button>
-          &nbsp;<button type="button" class="btn btn-danger">xóa</button>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">6</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>
-          <button type="button" class="btn btn-primary">chi tiết</button>
-          &nbsp;<button type="button" class="btn btn-danger">xóa</button>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">7</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>
-          <button type="button" class="btn btn-primary">chi tiết</button>
+          <button @click="viewFilmDetails(film._id)" type="button" class="btn btn-primary">chi tiết</button>
           &nbsp;<button type="button" class="btn btn-danger">xóa</button>
         </td>
       </tr>
@@ -94,6 +34,7 @@ import { mapStores } from "pinia";
 import FilmList from "@/components/FilmList.vue";
 import Paginate from "@/components/Paginate.vue";
 import { usePageStore } from "../stores/page.store";
+import filmService from "../service.js/film.service";
 
 export default {
   components: {
@@ -101,12 +42,23 @@ export default {
     Paginate,
   },
   data() {
-    return {};
+    return {
+      films: []
+    }
   },
-  computed: {},
-  methods: {},
-  created() {},
-  mounted() {},
+  computed: {
+
+  },
+  methods: {
+    viewFilmDetails(filmId) {
+      this.$router.push({ name: 'admin-film-create', params: { id: filmId } });
+    }
+  },
+  async created() {
+    this.films = await filmService.getNewFilm(1);
+  },
+  mounted() {
+  }
 };
 </script>
 
