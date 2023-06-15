@@ -3,7 +3,7 @@
   <h1>Thêm Phim Mới</h1>
   <!-- <button type="button" class="btn btn-primary">Thêm Phim Mới</button> -->
   <form>
-    <div class="form-group">
+    <!-- <div class="form-group">
       <label for="exampleInputEmail1">Tên Phim</label>
       <input
         type="email"
@@ -59,6 +59,70 @@
     <div class="form-check">
       <input type="checkbox" class="form-check-input" id="exampleCheck1" />
       <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button> -->
+    <div class="form-group">
+      <label for="tenphim">Tên phim:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="tenphim"
+        placeholder="Nhập tên phim"
+      />
+    </div>
+    <div class="form-group">
+      <label for="noisanxuat">Nơi sản xuất:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="noisanxuat"
+        placeholder="Nhập nơi sản xuất"
+      />
+    </div>
+    <div class="form-group">
+      <label for="thoiluong">Thời lượng:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="thoiluong"
+        placeholder="Nhập thời lượng"
+      />
+    </div>
+    <div class="form-group">
+      <label for="linkphim">Link phim:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="linkphim"
+        placeholder="Nhập link phim"
+      />
+    </div>
+    <div class="form-group">
+      <label for="linkposter">Link poster:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="linkposter"
+        placeholder="Nhập link poster"
+      />
+    </div>
+    <div class="form-group">
+      <label for="namsanxuat">Năm sản xuất:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="namsanxuat"
+        placeholder="Nhập năm sản xuất"
+      />
+    </div>
+    <div class="form-group">
+      <label for="mota">Mô tả:</label>
+      <textarea
+        class="form-control"
+        id="mota"
+        rows="3"
+        placeholder="Nhập mô tả"
+      ></textarea>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>

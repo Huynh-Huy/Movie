@@ -10,6 +10,11 @@
                     </div>
                     <br>
                     <img :src="film.thumb_url" class="poster" alt="">
+                    <!-- <title>Lưu yêu thích</title> -->
+                    <!-- <br/> -->
+                    <br><button class="favorite-button" :class="{ favorite: isFavorite }" @click="toggleFavorite">
+                    {{ isFavorite ? 'Đã thích' : 'Yêu thích' }}
+                    </button>
                 </div>
                 <div class="col-md-8 pt-4">
                     <div class="text-white">
@@ -49,19 +54,46 @@
             </div>
         </div>
     </div>
+
 </template>
 
 <script>
 export default {
     props: {
-        film: { type: Object, require: true }
+        film: { type: Object, require: true },
+    },
+    data() {
+    return {
+      isFavorite: false
     }
+  },
+  methods: {
+    toggleFavorite() {
+      this.isFavorite = !this.isFavorite;
+    }
+  }
 }
+
 </script>
 
 
 <style>
+.favorite-button {
+      
+    display: block;
+    margin-left: 135px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 30%;
+    
 
+    }
+    .favorite-button.favorite {
+      background-color: rgb(204, 16, 16);
+      color: rgb(40, 61, 118);
+    }
 
 .ul-horizon li {
     display: inline;

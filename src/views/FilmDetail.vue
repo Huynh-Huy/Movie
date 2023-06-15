@@ -1,6 +1,8 @@
 <template>
   <div class="alert alert-dark" role="alert">FilmChua</div>
-  <button type="button" class="btn btn-primary">Thêm Phim Mới</button>
+  <button @click="viewFilmDetails()" type="button" class="btn btn-primary">
+    Thêm Phim Mới
+  </button>
   <br />
   <br />
   <table class="table table-striped">
@@ -20,7 +22,13 @@
         <td v-text="film.time"></td>
         <td v-text="film.country[0]"></td>
         <td>
-          <button @click="viewFilmDetails(film._id)" type="button" class="btn btn-primary">chi tiết</button>
+          <button
+            @click="viewFilmDetails(film._id)"
+            type="button"
+            class="btn btn-primary"
+          >
+            chi tiết
+          </button>
           &nbsp;<button type="button" class="btn btn-danger">xóa</button>
         </td>
       </tr>
@@ -43,22 +51,19 @@ export default {
   },
   data() {
     return {
-      films: []
-    }
+      films: [],
+    };
   },
-  computed: {
-
-  },
+  computed: {},
   methods: {
-    viewFilmDetails(filmId) {
-      this.$router.push({ name: 'admin-film-create', params: { id: filmId } });
-    }
+    viewFilmDetails() {
+      this.$router.push({ name: "admin-film-create" });
+    },
   },
   async created() {
     this.films = await filmService.getNewFilm(1);
   },
-  mounted() {
-  }
+  mounted() {},
 };
 </script>
 
